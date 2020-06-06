@@ -1,5 +1,6 @@
 from RandCRM import app
+from flask import render_template
 
-@app.route("/")
+@app.route("/", methods=["GET"])
 def index():
-    return "Hello CRM"
+    return render_template("index.html")

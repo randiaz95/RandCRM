@@ -1,0 +1,21 @@
+from .. import db
+
+class Contact(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(100))
+    last_name = db.Column(db.String(100))
+    phone = db.Column(db.String(35))
+    email = db.Column(db.String(100))
+    website = db.Column(db.String(512))
+    business_name = db.Column(db.String(512))
+    country = db.Column(db.String(56))
+    city = db.Column(db.String(85))
+    state = db.Column(db.String(2))
+    address = db.Column(db.String(128))
+    zipcode = db.Column(db.String(32))
+    latitude = db.Column(db.String(14))
+    longitude = db.Column(db.String(14))
+    category = db.Column(db.String(512))
+    industry = db.Column(db.String(512))
+    notes = db.Column(db.String(1024))
+    owner_id = db.Column(db.Integer, db.ForeignKey('user.id'))
