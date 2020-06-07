@@ -1,4 +1,5 @@
 <!DOCTYPE HTML>
+
 <html>
 	<head>
 		<title>RandCRM</title>
@@ -24,8 +25,8 @@
 							<a href="#contact" class="icon solid fa-envelope"><span>Contact</span></a>
 							<a href="https://twitter.com/_randydiaz" class="icon brands fa-twitter"><span>Twitter</span></a>
 						{% else %}
-							<a href="#login" class="icon solid fa-home"><span>Login</span></a>
-							<a href="#signup" class="icon solid fa-folder"><span>Signup</span></a>
+							<a href="#login" class="icon solid fa-home"></a>
+							<a href="#signup" class="icon solid" style="font-size: 20px;">Signup</a>
 						{% endif %}
 
 					</nav>
@@ -36,14 +37,13 @@
 						{% if current_user.is_authenticated %}
 							<article id="home" class="panel intro">
 								<header>
-									<h1>Login</h1>
+									<h1>{{current_user.email}}</h1>
 								</header>
-								<form action="/login" method="POST">
-									<input name="email" type="email" placeholder="email">
-									<input name="password" type="password" placeholder="password" autocomplete="OFF">
-									<input name="remember" type="checkbox" value="Remember Me">
-								</form>
+								<p>
+
+								</p>
 							</article>
+
 							<article id="work" class="panel">
 								<header>
 									<h2>Work</h2>
@@ -122,6 +122,19 @@
 									</div>
 								</form>
 							</article>
+						{% elif confirmation %}
+							<article id="confirm" class="panel intro">
+								<header>
+									<h1>Confirmation Code</h1>
+								</header>
+								<p>
+									We have sent you a confirmation code to your email!
+								</p>
+								<form action="/confirm" method="POST">
+									<input name="code" type="password">
+									<input type="submit" value="Confirm" style="padding-top:4px;">
+								</form>
+							</article>
 						{% else %}
 							<article id="login" class="panel intro">
 								<header>
@@ -130,8 +143,10 @@
 								<form action="/login" method="POST">
 									<input name="email" type="email" placeholder="email">
 									<input name="password" type="password" placeholder="password">
+									<input type="submit" value="Login" style="padding-top:4px;">
 								</form>
 							</article>
+
 							<article id="signup" class="panel intro">
 								<header>
 									<h1>Signup</h1>
@@ -140,17 +155,10 @@
 									<input name="email" type="email" placeholder="email">
 									<input name="password" type="password" placeholder="password">
 									<input name="password" type="password" placeholder="password">
+									<input type="submit" value="Signup" style="padding-top:4px;">
 								</form>
 							</article>
 
-							<article id="confirm" class="panel intro">
-								<header>
-									<h1>Confirmation Code</h1>
-								</header>
-								<form action="/confirm" method="POST">
-									<input name="code" type="password">
-								</form>
-							</article>
 						{% endif %}
 					</div>
 

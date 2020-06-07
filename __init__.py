@@ -21,5 +21,10 @@ migrate.init_app(app, db)
 csrf = CSRFProtect()
 csrf.init_app(app)
 
+from .models.user import User
+@login_manager.user_loader
+def load_user(user_id):
+    return User.get(user_id)
+
 import RandCRM.controllers.index
 import RandCRM.controllers.login

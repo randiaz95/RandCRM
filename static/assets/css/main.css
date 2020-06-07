@@ -1944,6 +1944,7 @@ input, select, textarea {
 /* Main */
 
 	#main {
+	    padding: 10px;
 		position: relative;
 		overflow: hidden;
 		width: 100%;
